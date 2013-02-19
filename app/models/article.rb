@@ -1,8 +1,11 @@
 class Article < ActiveRecord::Base
-  attr_accessible :body, :title, :tag_list
+  attr_accessible :body, :title, :tag_list, :image
   has_many :comments
   has_many :taggings
   has_many :tags, through: :taggings
+  #has_attached_file :image #for paperclip images.
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  # > will maintain the aspect ratio.
 
   def tag_list
   	#return self.tags.join(", ")
@@ -16,7 +19,7 @@ class Article < ActiveRecord::Base
   end
 
   def tag_list=(tags_string)
-  	self.taggings.detroy_all
+  	self.taggings.destroy_all
   	#Remove all existing tags to prevent double tagging.
 
   	#Separate the tags by ', ' and downcase them.

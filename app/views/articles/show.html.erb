@@ -11,6 +11,11 @@
 <p>Tags: <%= tag_links(@article.tags) %></p> <!-- calls helper method -->
 <p><%= @article.body %></p>
 
+<!-- Display the image -->
+<% if @article.image.exists? %>
+  <%= image_tag @article.image.url(:medium) %><br />
+<% end %>
+
 <!-- Show Created/Updated -->
 <span class="label"><b>Created: </b><%= @article.created_at.strftime("%d/%m/%Y - %I:%M %p") %></span> 
 <% if @article.updated_at != @article.created_at %>
