@@ -1,4 +1,8 @@
 Osc::Application.routes.draw do
+  get "tags/index"
+
+  get "tags/show"
+
   get "welcome/index"
 
   get "welcome/getstarted"
@@ -22,6 +26,8 @@ Osc::Application.routes.draw do
   resources :articles
 
   resources :comments
+
+  resources :tags
 
 
   # The priority is based upon order of creation:

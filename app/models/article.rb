@@ -16,8 +16,12 @@ class Article < ActiveRecord::Base
   end
 
   def tag_list=(tags_string)
+  	self.taggings.detroy_all
+  	#Remove all existing tags to prevent double tagging.
+
   	#Separate the tags by ', ' and downcase them.
-  	tag_names = tags_string.split(", ").collect{|s| s.strip.downcase}
+  	tag_names = tags_string.split(", ").collect{|s| s.strip.downcase} .uniq
+  	#.uniq removes any repeated tags.
 
   	tag_names.each do |tag_name|  		
 	  	#Check that the tags arent already in the tags table or add them.
