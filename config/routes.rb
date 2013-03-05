@@ -1,22 +1,36 @@
 Osc::Application.routes.draw do
+  get "author_sessions/controller"
+
+  get "author_sessions/new"
+
   get "tags/index"
 
   get "tags/show"
 
   get "welcome/index"
+  match 'home' => 'welcome#index' #added to allow page shortcuts
+  match 'index' => 'welcome#index'
 
   get "welcome/getstarted"
+  match 'getstarted' => 'welcome#getstarted'
 
   get "welcome/whatson"
+  match 'whatson' => 'welcome#whatson'
 
   get "welcome/aboutus"
+  match 'aboutus' => 'welcome#aboutus'
 
   get "welcome/race"
+  match 'race' => 'welcome#race'
 
   get "welcome/gallery"
+  match 'gallery' => 'welcome#gallery'
 
 
   get "welcome/joinus"
+  match 'joinus' => 'welcome#joinus'
+
+
   get "welcome/access"
 
   get "welcome/login"
@@ -28,6 +42,14 @@ Osc::Application.routes.draw do
   resources :comments
 
   resources :tags
+
+  resources :authors
+
+  resources :author_sessions,
+            only: [ :new, :create, :destroy]
+            
+  match 'login' => 'author_sessions#new'
+  match 'logout' => 'author_sessions#destroy'
 
 
   # The priority is based upon order of creation:

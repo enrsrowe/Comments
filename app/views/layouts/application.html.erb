@@ -51,7 +51,20 @@
           <div class="span7">
             <p>&copy; Oval Ski Club 2013 |  Made with 
             <a target="_blank" href="http://getbootstrap.com">Bootstrap.</a> | Sam Rowell | <a href="access.html" accesskey="K"> Access Keys</a></p>
+
+            <!-- added for user name etc-->
+            <h6>
+              <% if logged_in? %>
+                <%= "Logged in as #{current_user.username}" %>
+                <%= link_to "(logout)", logout_path %>
+              <% else %>
+                <%= link_to "(login)", login_path %>
+              <% end %>
+            </h6>
+            <!--end username -->
+
           </div>
+
           <div class="pull-right">       
             <a href="http://www.facebook.com/group.php?gid=2256597544" target="_blank" accesskey="G"> <img src="../../assets/facebook.png" height="25" width="25" alt="Facebook"/></a>
             <a href="http://www.twitter.com" target="_blank" accesskey="T"> <img src="../../assets/twitter.png" height="25" width="25" alt="Twitter"/></a>
