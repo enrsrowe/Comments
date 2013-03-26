@@ -1,4 +1,7 @@
 Osc::Application.routes.draw do
+  resources :statuses
+
+
   get "author_sessions/controller"
 
   get "author_sessions/new"

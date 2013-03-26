@@ -4,11 +4,6 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all.reverse #Allows articles to be displayed newest first.
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @articles }
-    end
   end
 
   # GET /articles/1
